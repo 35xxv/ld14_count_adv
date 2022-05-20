@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/count.css">
+  </head>
+  <body>
+    <!--@numberっていう数字の列を文字列に変換して、変数STRに代入したってことよ。-->
+    <% str = @number.to_s %>
+    
+    <% if @number  == 0 then%>
+      <h1 class="normal"><%= @number %></h1>
+      
+    <% elsif @number % 15 == 0 then%>
+      <% if str.include? "3" %>
+        <h1 class="waru15"><%= @number %></h1>
+      
+      <% else %>
+        <h1 class="waru15_no3"><%= @number %></h1>
+      <% end %>
+      
+    <% elsif @number % 5 == 0 then%>
+      <% if str.include? "3" %>
+        <h1 class="waru5"><%= @number %></h1>
+      
+      <% else %>
+        <h1 class="waru5_no3"><%= @number %></h1>
+      <% end %>
+      
+    <% elsif @number % 3 == 0 then%>
+      <% if str.include? "3" %>
+        <h1 class="waru3"><%= @number %></h1>
+      
+      <% else %>
+        <h1 class="waru3_no3"><%= @number %></h1>
+      <% end %>
+    
+    <% else %>
+      <% if str.include? "3" %>
+        <h1 class="baisuu"><%= @number %></h1>
+        <% else %>
+        <h1 class="normal"><%= @number %></h1>
+      <% end %>
+    <% end %>
+    
+    <form action="/plus" method="post">
+      <input type="submit" value="+">
+    </form>
+    
+    <form action="/minus" method="post">
+      <input type="submit" value="-">
+    </form>
+    
+    <form action="/clear" method="post">
+      <input type="submit" value="!">
+    </form>
+  </body>
+</html>
